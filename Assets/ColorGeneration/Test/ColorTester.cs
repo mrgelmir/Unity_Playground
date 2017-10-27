@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +17,10 @@ namespace ColorGeneration.Test
 
 		private ColorGenerator cg;
 
+		protected void Start()
+		{
+			cg = new ColorGenerator(colorSettings);
+		}
 
 		public void GenerateColors()
 		{
@@ -28,7 +31,11 @@ namespace ColorGeneration.Test
 			}
 
 			// Generate new images
-			ICollection<Color> colors = cg.GetColorSet(3);
+			ICollection<Color> colors = cg.GetColorSet(colorCount);
+			//ICollection<Color> colors = ColorGenerator.GetRandomColors(colorCount);
+
+
+
 			foreach (Color color in colors)
 			{
 				AddImage(color);
